@@ -20,30 +20,30 @@ def read_data_from_file(filename):
 
 df_country, df_year = read_data_from_file('API_1_DS2_en_csv_v2_5358775.csv')
 
-# print data
+# print_data
 print(df_country,df_year)
 
 
-# Read data
+# Read_data
 df = pd.read_csv('API_1_DS2_en_csv_v2_5358775.csv', skiprows=4)
 # clean data
 df.fillna('', inplace=True)
 
-# Indicators of interest
+# Indicators_of_interest
 indicators_array = ['Rural population (% of total population)', 'Agricultural nitrous oxide emissions (% of total)','Agricultural methane emissions (% of total)', 'Rural population growth (annual %)']
 
-# Countries of interest
+# Countries_of_interest
 countries_array = ['China','France','India','South Africa','Romania','United Kingdom','United States']
 
 
 
-# Subset the data
+# Subset_the_data
 df_sub = df[(df['Country Name'].isin(countries_array)) & (df['Indicator Name'].isin(indicators_array))]
 
 # Calculate statistics with describe
 stats = df_sub.groupby(['Country Name', 'Indicator Name']).describe()
 
-# Print the statistics
+# Print_statistics
 print(stats)
 
 # get years colums
